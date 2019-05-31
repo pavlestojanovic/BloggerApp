@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Sign up</title>
+</h:head>
+<h:body>
+	<p:messages globalOnly="true" autoUpdate="true"/>
+	<h:form>
+		<table>
+			<tr>
+				<td>Username:</td>
+				<td>
+					<p:inputText label="User Name" id="username" value="#{userBean.username}"
+					required="true"/>
+					<p:message for="username"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td>
+					<p:inputText label="Password" id="password" value="#{userBean.password}"
+					required="true"/>
+					<p:message for="password"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>
+					<p:inputText label ="Email" id="email" value="#{userBean.email}" 
+					required="true"/>
+					<p:message for="email"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td>
+					<p:inputText label="Name" id="name" value="#{userBean.name}"
+					required="true"/>
+					<p:message for="name"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Surname:</td>
+				<td>
+				<p:inputText label="Surname" id="surname" value="#{userBean.surname}"
+				required="true"/>
+				<p:message for="surname"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Nickname:</td>
+				<td>
+				<p:inputText label="Nickname" id="nickname" value="#{userBean.nickname}"
+				required="true"/>
+				<p:message for="nickname"></p:message>
+				</td>
+			</tr>
+		</table>
+		<p></p>
+		<p><p:commandButton value="Register" action="#{userBean.createUser}"></p:commandButton></p>
+	</h:form>
+</h:body>
+</html>

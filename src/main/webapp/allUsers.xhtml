@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Users</title>
+</h:head>
+<h:body>
+	<h3>All Users</h3>
+	<h:form>
+	<p:dataTable value="#{userBean.allUsers}"  var="user" binding="#{userBean.dataTable}" >
+		<p:column headerText="Username" sortBy="#{user.username}" filterBy="#{user.username}">
+			<h:outputLink value="userDetail.xhtml">
+				<f:param name="userId" value="#{user.id}" />
+			#{user.username}
+			</h:outputLink>
+		</p:column>
+		<p:column headerText="Name" sortBy="#{user.name}" filterBy="#{user.name}">
+			#{user.name}
+		</p:column>
+		<p:column headerText="Surname" sortBy="#{user.surname}" filterBy="#{user.surname}">
+			#{user.surname}
+		</p:column>
+		<p:column headerText="Nickname" sortBy="#{user.nickname}" filterBy="#{user.nickname}">
+			#{user.nickname}
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>

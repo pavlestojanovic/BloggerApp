@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Article update</title>
+</h:head>
+<h:body>
+	<h3>Article update</h3>
+	<p:messages globalOnly="true" autoUpdate="true"/>
+	<h:form>
+	<p:dataTable var="article" value="#{articleBean.article}" >
+		<p:column headerText="Title">
+			<p:inputText label="Title" id="title" value="#{articleBean.title}"/>
+					<h:message for="title"></h:message>
+		</p:column>
+		<p:column headerText="Content">
+				<p:inputText label="Content" id="content" value="#{articleBean.content}"/>
+					<p:message for="content"></p:message>
+		</p:column>
+		<p:column>
+             <p:commandButton value="Update" action="#{articleBean.updateArticle()}">
+              	<f:param name="articleId" value="#{article.id}" />    
+             </p:commandButton>            
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>

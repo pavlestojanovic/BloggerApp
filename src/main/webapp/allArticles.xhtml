@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Articles</title>
+</h:head>
+<h:body>
+	<h3>All Articles</h3>
+	<h:form>
+	<p:dataTable value="#{articleBean.allArticles}" var="article" binding="#{articleBean.dataTable}" >
+		<p:column headerText="Title" sortBy="#{article.title}" filterBy="#{article.title}">
+			<h:outputLink value="articleDetail.xhtml">
+				<f:param name="articleId" value="#{article.id}" />
+			#{article.title}
+			</h:outputLink>
+		</p:column>
+		<p:column headerText="Content" sortBy="#{article.content}" filterBy="#{article.content}">
+			#{article.content}
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>

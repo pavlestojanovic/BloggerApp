@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Article detail</title>
+</h:head>
+<h:body>
+	<h3>Article detail</h3>
+	<h:form>
+	<p:dataTable id="articleData"  var="article" value="#{articleBean.article}" >
+		<p:column headerText="Title">
+			#{article.title}
+		</p:column>
+		<p:column headerText="Content">
+			#{article.content}
+		</p:column>
+		<p:column headerText="Created">
+			#{article.created}
+		</p:column>
+		<p:column headerText="Keywords">
+			#{article.keywords}
+		</p:column>
+		<p:column headerText="Average rating">
+			#{article.averageCounter}
+		</p:column>
+		<p:column headerText="Article by">
+                <h:outputText value="#{article.user.username}" />
+		</p:column>
+		<p:column headerText="Tags">
+                <h:outputText value="#{articleBean.tags}" />
+                <f:param name="articleId" value="#{article.id}" />
+		</p:column>
+		<p:column>
+	            <h:outputLink value="updateArticle.xhtml">
+					<f:param name="articleId" value="#{article.id}" />
+				Update
+				</h:outputLink>                
+		</p:column>
+	</p:dataTable>
+	<p:dataGrid var="article" value="#{articleBean.article}">
+	<p:commandButton value="Add Comment" action="addComment.xhtml">
+	              <f:param name="articleId" value="#{article.id}" />    
+	</p:commandButton>
+	<p:commandButton value="See all comments for this article" action="allComments.xhtml">
+				<f:param name="articleId" value="#{article.id}" />
+	</p:commandButton>
+	<br />
+	<p:commandButton value="Rate this article" action="rateArticle.xhtml">
+				<f:param name="articleId" value="#{article.id}" />
+	</p:commandButton>
+	<br />
+	<p:commandButton value="Add Tag" action="addTag.xhtml">
+				<f:param name="articleId" value="#{article.id}" />
+	</p:commandButton>
+	</p:dataGrid>
+	</h:form>
+</h:body>
+</html>

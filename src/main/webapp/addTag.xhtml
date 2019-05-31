@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Add Tag</title>
+</h:head>
+<h:body>
+	<h3>Add Tag</h3>
+	<p:messages globalOnly="true" autoUpdate="true"/>
+	<h:form>
+	<p:dataTable var="article" value="#{articleBean.article}" >
+		<p:column headerText="Tag">
+			<p:inputText label="Tag" id="tag" value="#{tagBean.value}"/>
+					<p:message for="tag"></p:message>
+		</p:column>
+		<p:column>
+	              <p:commandButton value="Add" action="#{tagBean.createTag()}">
+	              <f:param name="articleId" value="#{article.id}" />    
+	              </p:commandButton>            
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>

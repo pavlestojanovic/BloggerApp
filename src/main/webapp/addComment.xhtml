@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Add Comment</title>
+</h:head>
+<h:body>
+	<h3>Add Comment</h3>
+	<p:messages globalOnly="true" />
+	<h:form>
+	<p:dataTable var="article" value="#{articleBean.article}" >
+		<p:column headerText="Comment">
+			<p:inputText label="Comment" id="comment" value="#{commentBean.text}"/>
+					<p:message for="comment"></p:message>
+		</p:column>
+		<p:column>
+	              <p:commandButton value="Add" action="#{commentBean.createComment()}">
+	              <f:param name="articleId" value="#{article.id}" />    
+	              </p:commandButton>            
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>

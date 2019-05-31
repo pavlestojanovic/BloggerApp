@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Comments</title>
+</h:head>
+<h:body>
+	<h3>All Comments</h3>
+	<h:form>
+	<p:dataTable value="#{commentBean.allComments}"  var="comment">
+		<p:column headerText="Text">
+			#{comment.text}
+		</p:column>
+		<p:column headerText="Positive rating">
+			#{comment.upVote}
+		</p:column>
+		<p:column headerText="Negative rating">
+			#{comment.downVote}
+		</p:column>
+		<p:column headerText="Created">
+			#{comment.created}
+		</p:column>
+		<p:column headerText="Comment by">
+                <h:outputText value="#{comment.user.username}" />
+		</p:column>
+		<p:column>
+		<p:button outcome="votedComment.xhtml" value="Vote">
+			<f:param name="commentId" value="#{comment.id}" />
+		</p:button>
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>

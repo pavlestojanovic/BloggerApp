@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Comment vote</title>
+</h:head>
+<h:body>
+<p:messages globalOnly="true" autoUpdate="true"/>
+	<h:form>
+	<p:dataTable var="comment" value="#{commentBean.comment}" >
+		<p:column headerText="Text">
+			#{comment.text}
+		</p:column>
+		<p:column headerText="Positive rating">
+			#{comment.upVote}
+		</p:column>
+		<p:column headerText="Negative rating">
+			#{comment.downVote}
+		</p:column>
+		<p:column headerText="Created">
+			#{comment.created}
+		</p:column>
+		<p:column headerText="Comment by">
+                <h:outputText value="#{comment.user.username}" />
+		</p:column>
+		<p:column>
+		<p:commandButton value="Vote Up" action="#{commentBean.upVoteComment()}">
+	              <f:param name="commentId" value="#{comment.id}" />  
+		</p:commandButton>
+		</p:column>
+		<p:column>
+		<p:commandButton value="Vote Down" action="#{commentBean.downVoteComment()}">
+	              <f:param name="commentId" value="#{comment.id}" />    
+		</p:commandButton>
+		</p:column>
+		<p:column>
+		<p:commandButton value="Delete" action="#{commentBean.deleteComment()}">
+	              <f:param name="commentId" value="#{comment.id}" />    
+		</p:commandButton>
+		</p:column>
+		<p:column>
+			<p:button outcome="allComments.xhtml" value="Return">
+			<f:param name="articleId" value="#{comment.article.id}" />
+		</p:button>
+		</p:column>
+	</p:dataTable>	
+	</h:form>	
+</h:body>
+</html>
